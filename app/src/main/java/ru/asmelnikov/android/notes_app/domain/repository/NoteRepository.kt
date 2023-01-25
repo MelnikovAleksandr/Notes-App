@@ -17,6 +17,6 @@ interface NoteRepository {
     @Delete
     suspend fun deleteNote(note: Note)
 
-    @Query("SELECT * FROM note WHERE id: noteId")
+    @Query("SELECT * FROM note WHERE id=:noteId")
     suspend fun getNoteById(noteId: Long): Note
 }
