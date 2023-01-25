@@ -1,4 +1,4 @@
-package ru.asmelnikov.android.notes_app.ui.theme
+package ru.asmelnikov.android.notes_app.presentation.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle
