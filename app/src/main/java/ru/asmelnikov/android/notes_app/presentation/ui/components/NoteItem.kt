@@ -31,8 +31,7 @@ fun NoteItem(title: String, backgroundColor: Color, modifier: Modifier) {
                 modifier = Modifier
                     .align(Alignment.Center)
                     .padding(vertical = 22.dp)
-                    .padding(horizontal = 22.dp)
-
+                    .padding(horizontal = 45.dp)
             )
         }
     }

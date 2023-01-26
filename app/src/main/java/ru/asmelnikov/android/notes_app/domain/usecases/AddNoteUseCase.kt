@@ -5,7 +5,7 @@ import ru.asmelnikov.android.notes_app.domain.model.Note
 import javax.inject.Inject
 
 class AddNoteUseCase @Inject constructor(
-    private val noteRepositoryImpl: NoteRepositoryImpl
+    private val noteRepository: NoteRepositoryImpl
 ) {
-    suspend operator fun invoke(note: Note) = noteRepositoryImpl.insertNote(note = note)
+    suspend operator fun invoke(note: Note) = noteRepository.insertNote(note = note)
 }

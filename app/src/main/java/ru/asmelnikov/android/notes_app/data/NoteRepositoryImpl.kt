@@ -5,11 +5,11 @@ import ru.asmelnikov.android.notes_app.domain.repository.NoteRepository
 import javax.inject.Inject
 
 class NoteRepositoryImpl @Inject constructor(
-    private val noteRepository: NoteRepository
+    private val noteRepositoryImpl: NoteRepository
 ) {
-    suspend fun getAllNotes(): List<Note> = noteRepository.getAllNotes()
-    suspend fun insertNote(note: Note) = noteRepository.insertNote(note = note)
-    suspend fun deleteNote(note: Note) = noteRepository.deleteNote(note = note)
-    suspend fun getNoteById(id: Long) = noteRepository.getNoteById(noteId = id)
+    suspend fun getAllNotes(): List<Note> = noteRepositoryImpl.getAllNotes()
+    suspend fun insertNote(note: Note) = noteRepositoryImpl.insertNote(note = note)
+    suspend fun deleteNote(note: Note) = noteRepositoryImpl.deleteNote(note = note)
+    suspend fun getNoteById(id: Long) = noteRepositoryImpl.getNoteById(noteId = id)
 
 }
