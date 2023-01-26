@@ -1,6 +1,7 @@
-package ru.asmelnikov.android.notes_app.presentation.screens
+package ru.asmelnikov.android.notes_app.presentation.screens.main
 
 import android.annotation.SuppressLint
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -11,31 +12,30 @@ import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import ru.asmelnikov.android.notes_app.domain.model.Note
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
+import ru.asmelnikov.android.notes_app.presentation.navigation.Screens
 import ru.asmelnikov.android.notes_app.presentation.ui.NotesAppTheme
 import ru.asmelnikov.android.notes_app.presentation.ui.components.NoteItem
 
-
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun MainScreen() {
+fun MainScreen(navController: NavHostController) {
 
-    val notes: List<Note> = listOf(
-        Note(
-            title = "TEST",
-            content = "TEST CONTENT",
-            backgroundColor = Color(0xFFFF00FF).toArgb()
-        )
-    )
+    val viewModel = hiltViewModel<MainViewModel>()
+
+    val notes = viewModel.notes.observeAsState(listOf()).value
+
     Scaffold(
         floatingActionButton = {
-            FloatingActionButton(onClick = { /*TODO*/ }) {
+            FloatingActionButton(onClick = { navController.navigate(Screens.AddScreen.rout) }) {
                 Icon(
                     imageVector = Icons.Filled.Add,
                     tint = Color.White,
@@ -50,7 +50,7 @@ fun MainScreen() {
         ) {
             Text(
                 text = "Notes",
-                fontSize = 43.sp,
+                fontSize = 42.sp,
                 modifier = Modifier
                     .padding(top = 43.dp, start = 24.dp, bottom = 12.dp)
             )
@@ -62,6 +62,7 @@ fun MainScreen() {
                         .fillMaxSize()
                         .padding(horizontal = 24.dp)
                         .padding(vertical = 12.dp)
+                        .clickable { navController.navigate(Screens.DetailScreen.rout + "/${note.id}") }
                 )
             }
         }
@@ -72,6 +73,6 @@ fun MainScreen() {
 @Composable
 fun PreviewMainScreen() {
     NotesAppTheme {
-        MainScreen()
+        MainScreen(rememberNavController())
     }
 }

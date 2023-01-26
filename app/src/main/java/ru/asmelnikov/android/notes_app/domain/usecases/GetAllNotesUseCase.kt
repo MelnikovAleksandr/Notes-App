@@ -1,11 +1,10 @@
 package ru.asmelnikov.android.notes_app.domain.usecases
 
 import ru.asmelnikov.android.notes_app.data.NoteRepositoryImpl
-import ru.asmelnikov.android.notes_app.domain.model.Note
 import javax.inject.Inject
 
 class GetAllNotesUseCase @Inject constructor(
-    private val noteRepositoryImpl: NoteRepositoryImpl
+    private val noteRepository: NoteRepositoryImpl
 ) {
-    suspend operator fun invoke(note: Note) = noteRepositoryImpl.getAllNotes()
+    suspend operator fun invoke() = noteRepository.getAllNotes()
 }

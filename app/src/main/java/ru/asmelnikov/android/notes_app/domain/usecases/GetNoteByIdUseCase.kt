@@ -4,7 +4,7 @@ import ru.asmelnikov.android.notes_app.data.NoteRepositoryImpl
 import javax.inject.Inject
 
 class GetNoteByIdUseCase @Inject constructor(
-    private val noteRepositoryImpl: NoteRepositoryImpl
+    private val noteRepository: NoteRepositoryImpl
 ) {
-    suspend operator fun invoke(id: Long) = noteRepositoryImpl.getNoteById(id = id)
+    suspend operator fun invoke(id: Long) = noteRepository.getNoteById(id = id)
 }
