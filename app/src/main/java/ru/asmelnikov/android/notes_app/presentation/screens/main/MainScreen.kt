@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.FloatingActionButton
 import androidx.compose.material.Icon
@@ -59,7 +60,7 @@ fun MainScreen(navController: NavHostController) {
                     title = note.title,
                     backgroundColor = Color(note.backgroundColor),
                     modifier = Modifier
-                        .fillMaxSize()
+                        .fillMaxWidth()
                         .padding(horizontal = 24.dp)
                         .padding(vertical = 12.dp)
                         .clickable { navController.navigate(Screens.DetailScreen.rout + "/${note.id}") }
